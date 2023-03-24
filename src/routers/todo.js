@@ -7,7 +7,8 @@ const {getItem, getItems, createItem, deleteItem, updateItem } = require('../con
 
 router.post('/', createItem);
 router.delete('/:id', deleteItem);
-router.delete('/:id', updateItem);
+router.put('/:id', updateItem);
+router.get('/:id', getItem);
 router.get('/', getItems);
 
 

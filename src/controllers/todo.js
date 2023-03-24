@@ -4,9 +4,10 @@ const { TodoModel } = require('../models')
  *  @param {*} req 
  *  @param {*} res
  */
-const getItem = (req, res) =>{
-
-
+const getItem = async (req, res) =>{
+    const id = req.params.id
+    const todo = await TodoModel.findById(id)
+    res.json(todo)
 }
 /**
  * Get all items 
@@ -18,13 +19,17 @@ const getItems = async (req, res) =>{
     const data = await TodoModel.find({})
     res.send({data})
 }
+
 /**
  * Update one item 
  *  @param {*} req 
  *  @param {*} res
  */
-const updateItem = (req, res) =>{
-
+const updateItem = async (req, res) =>{
+    const id = req.params.id;
+    const todo = req.body;
+    const todoUpdate = await TodoModel.findByIdAndUpdate(id,todo)
+    res.send(todoUpdate)
 }
 /**
  * Create one item 
